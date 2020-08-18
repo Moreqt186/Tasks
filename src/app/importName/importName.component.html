@@ -1,0 +1,57 @@
+<div class="bg-info">
+  <h1 class="text-light m-2">TASKS</h1>
+  <form [formGroup]="myForm" class="container w-25 m-1 p-0" novalidate>
+    <div class="card text-info form-group m-1 p-0">
+      <button type="button" class="btn btn-outline-info m-1" (click)="sortByTaskName(tasks);">Сортировка по имени
+      </button>
+      <button type="button" class="btn btn-outline-info m-1" (click)="sortByTask(tasks);">Сортировка по задаче</button>
+      <p class="m-1">Введите имя задачи: </p>
+      <input type="text" class="btn btn-outline-info form-control m-0" formControlName="taskName"/>
+      <div class="m-1 btn btn-danger"
+           *ngIf="myForm.controls['taskName'].touched && myForm.controls['taskName'].invalid">
+        Введите задачу !!!
+      </div>
+      <p class="m-1">Введите задачу: </p>
+      <input type="text" class="btn btn-outline-info form-control m-0" formControlName="task"/><br>
+      <div class="btn btn-danger m-1" *ngIf="myForm.controls['task'].touched && myForm.controls['task'].invalid">
+        Ведите имя задачи !!!
+      </div>
+      <button class="btn btn-outline-info m-1"
+              (click)="methodTask(myForm.controls['task'].value,myForm.controls['taskName'].value)">Добавить задачу
+      </button>
+    </div>
+  </form>
+  <span cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+<div class="row row-cols-3 m-1">
+<div class="card bg-light w-15" *ngFor="let item of tasks; let index = index" cdkDragLockAxis="x"
+     cdkDrag>
+  <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+  <div class="card-body p-1">
+<button type="button" class="btn btn-outline-info m-1" (click)="onSelect(item)">Перейти к задаче</button>
+     <h5 class="card-title text-info m-1"> Имя Задачи: {{item.taskName | uppercase}}</h5>
+    <h6 class="card-text text-info m-1"> Содержание Задачи: {{item.task}}</h6>
+  </div>
+  <span *ngIf="!item.editing">
+    <img class="w-25 h-40 m-1" [src]="item.myUrl" *ngIf="item.myUrl">
+    <br>
+<button type="button" class="btn btn-outline-info m-1" (click)="methodRem(index)">Удалить задачу</button>
+<button type="button" class="btn btn-outline-info m-1" (click)="toggleEdit(item)">Редактировать</button>
+    <div class="input-group mb-1">
+    <div class="custom-file m-1">
+  <input type="file" class="custom-file-input " id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"
+         (change)="selectFile($event, item)">
+  <label class="custom-file-label text-info" for="inputGroupFile01">Выберите картинку</label>
+      </div>
+    </div>
+</span>
+  <div *ngIf="item.editing">
+<input type="text" class="btn btn-outline-info" [(ngModel)]="currentTasks.taskName"/>
+<input type="text" class="btn btn-outline-info" [(ngModel)]="currentTasks.task"/>
+
+<button type="button" class="btn btn-outline-info" (click)="methodEditTask(item, index)">Сохранить</button>
+<button type="button" class="btn btn-outline-info" (click)="methodRem(index)">Удалить задачу</button>
+</div>
+</div>
+    </div>
+</span>
+</div>
