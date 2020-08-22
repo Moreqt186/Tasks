@@ -32,8 +32,8 @@ export class ImportNameComponent implements OnInit, OnDestroy {
   }
 
 // создание задачи
-  methodTask(task, taskName) {
-    this.svc.methodTasks(taskName, task);
+  addTask(task, taskName) {
+    this.svc.addTask(taskName, task);
   }
 
 // переключатель
@@ -42,9 +42,9 @@ export class ImportNameComponent implements OnInit, OnDestroy {
   }
 
 // редактирование задачи
-  methodEditTask(item, index) {
+  editTask(item, index) {
     if (this.currentTasks.task.trim() && this.currentTasks.taskName.trim()) {
-      this.svc.methodEditTask(index, this.currentTasks.taskName, this.currentTasks.task);
+      this.svc.editTask(index, this.currentTasks.taskName, this.currentTasks.task);
     }
     item.editing = false;
   }
@@ -70,7 +70,7 @@ export class ImportNameComponent implements OnInit, OnDestroy {
   }
 
 // Удаление
-  methodRem(index) {
+  remove(index) {
     this.svc.methodRem(this.tasks, index);
   }
 
@@ -81,6 +81,5 @@ export class ImportNameComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     localStorage.setItem('tasks', JSON.stringify(this.tasks));
-    // console.log(localStorage);
   }
 }

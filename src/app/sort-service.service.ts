@@ -26,7 +26,7 @@ export class SortServiceService {
 
   }
 
-  public methodTasks(a, b) {
+  public addTask(a, b) {
     this.tasks.push({
       task: a,
       taskName: b,
@@ -61,7 +61,7 @@ export class SortServiceService {
     return this.tasks;
   }
 
-  methodEditTask(index, task, taskName) {
+  editTask(index, task, taskName) {
     this.tasks[index].task = task;
     this.tasks[index].taskName = taskName;
   }

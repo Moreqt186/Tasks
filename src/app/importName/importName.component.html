@@ -17,7 +17,7 @@
         Ведите имя задачи !!!
       </div>
       <button class="btn btn-outline-info m-1"
-              (click)="methodTask(myForm.controls['task'].value,myForm.controls['taskName'].value)">Добавить задачу
+              (click)="addTask(myForm.controls['task'].value,myForm.controls['taskName'].value)">Добавить задачу
       </button>
     </div>
   </form>
@@ -33,8 +33,7 @@
   </div>
   <span *ngIf="!item.editing">
     <img class="w-25 h-40 m-1" [src]="item.myUrl" *ngIf="item.myUrl">
-    <br>
-<button type="button" class="btn btn-outline-info m-1" (click)="methodRem(index)">Удалить задачу</button>
+<button type="button" class="btn btn-outline-info m-1" (click)="remove(index)">Удалить задачу</button>
 <button type="button" class="btn btn-outline-info m-1" (click)="toggleEdit(item)">Редактировать</button>
     <div class="input-group mb-1">
     <div class="custom-file m-1">
@@ -48,8 +47,8 @@
 <input type="text" class="btn btn-outline-info" [(ngModel)]="currentTasks.taskName"/>
 <input type="text" class="btn btn-outline-info" [(ngModel)]="currentTasks.task"/>
 
-<button type="button" class="btn btn-outline-info" (click)="methodEditTask(item, index)">Сохранить</button>
-<button type="button" class="btn btn-outline-info" (click)="methodRem(index)">Удалить задачу</button>
+<button type="button" class="btn btn-outline-info" (click)="editTask(item, index)">Сохранить</button>
+<button type="button" class="btn btn-outline-info" (click)="remove(index)">Удалить задачу</button>
 </div>
 </div>
     </div>
