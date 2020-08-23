@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {SortServiceService} from '../sort-service.service';
+import {SortService} from '../sort-service';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +16,7 @@ import {SortServiceService} from '../sort-service.service';
 export class HomeComponent implements OnInit {
   task;
 
-  constructor(private activateRoute: ActivatedRoute, public sortService: SortServiceService) {
+  constructor(private activateRoute: ActivatedRoute, public sortService: SortService) {
   }
 
   ngOnInit() {

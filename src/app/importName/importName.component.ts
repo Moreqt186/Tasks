@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
-import {SortServiceService} from '../sort-service.service';
+import {SortService} from '../sort-service';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 
 @Component({
@@ -12,7 +12,7 @@ import {FormGroup, FormControl, Validators} from '@angular/forms';
 
 export class ImportNameComponent implements OnInit, OnDestroy {
 
-  constructor(private svc: SortServiceService, private router: Router) {
+  constructor(private svc: SortService, private router: Router) {
   }
 
   currentTasks = {
@@ -71,7 +71,7 @@ export class ImportNameComponent implements OnInit, OnDestroy {
 
 // Удаление
   remove(index) {
-    this.svc.methodRem(this.tasks, index);
+    this.svc.remove(this.tasks, index);
   }
 
 // Роутинг

@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class SortServiceService {
+export class SortService {
   constructor() {
   }
   id = 1;
@@ -34,10 +34,9 @@ export class SortServiceService {
       myUrl: '',
       id: this.id++,
     });
-    console.log(this.tasks);
   }
 
-  public methodRem(tasks, index) {
+  public remove(tasks, index) {
     tasks.splice(index, 1);
   }
 
@@ -65,8 +64,4 @@ export class SortServiceService {
     this.tasks[index].task = task;
     this.tasks[index].taskName = taskName;
   }
-
-  // getTasks() {
-  //   return this.tasks;
-  // }
 }

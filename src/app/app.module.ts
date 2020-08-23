@@ -8,7 +8,7 @@ import {AppComponent} from './app.component';
 import {ImportNameComponent} from './importName/importName.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {SortServiceService} from './sort-service.service';
+import {SortService} from './sort-service';
 import {HomeComponent} from './home/home.component';
 
 const appRoutes: Routes = [
@@ -31,7 +31,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule
   ],
-  providers: [SortServiceService],
+  providers: [SortService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
