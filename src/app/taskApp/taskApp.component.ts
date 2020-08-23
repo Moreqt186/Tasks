@@ -7,7 +7,7 @@ import {FormGroup, FormControl, Validators} from '@angular/forms';
 @Component({
   selector: 'app-input',
   templateUrl: './taskApp.component.html',
-  styleUrls: ['./taskApp.scss']
+  styleUrls: ['./taskApp.component.scss']
 })
 
 export class ImportNameComponent implements OnInit, OnDestroy {
