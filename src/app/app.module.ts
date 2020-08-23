@@ -5,22 +5,22 @@ import {Routes, RouterModule} from '@angular/router';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {ImportNameComponent} from './importName/importName.component';
+import {ImportNameComponent} from './taskApp/taskApp.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SortService} from './sort-service';
-import {HomeComponent} from './home/home.component';
+import {TaskPageComponent} from './taskPage/taskPage.component';
 
 const appRoutes: Routes = [
   {path: '', component: ImportNameComponent},
-  {path: 'task/:id', component: HomeComponent},
+  {path: 'task/:id', component: TaskPageComponent},
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     ImportNameComponent,
-    HomeComponent,
+    TaskPageComponent,
   ],
   imports: [
     BrowserModule,

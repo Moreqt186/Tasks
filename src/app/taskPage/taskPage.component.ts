@@ -13,7 +13,7 @@ import {SortService} from '../sort-service';
           </div>
       </div>`
 })
-export class HomeComponent implements OnInit {
+export class TaskPageComponent implements OnInit {
   task;
 
   constructor(private activateRoute: ActivatedRoute, public sortService: SortService) {
