@@ -5,7 +5,7 @@ import {Routes, RouterModule} from '@angular/router';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {ImportNameComponent} from './taskApp/taskApp.component';
+import {ImportNameComponent} from './taskList/taskList.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SortService} from './sort-service';
