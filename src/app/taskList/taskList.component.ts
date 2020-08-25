@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import {SortService} from '../sort-service';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
+import {CurrentTasks} from '../models/tasks';
 
 @Component({
   selector: 'app-input',
@@ -14,8 +15,7 @@ export class ImportNameComponent implements OnInit, OnDestroy {
 
   constructor(private svc: SortService, private router: Router) {
   }
-
-  currentTasks = {
+  currentTasks: CurrentTasks = {
     taskName: '',
     task: '',
     editing: false,
@@ -32,12 +32,12 @@ export class ImportNameComponent implements OnInit, OnDestroy {
   }
 
 // создание задачи
-  addTask(task, taskName) {
+  addTask(task: string, taskName: string) {
     this.svc.addTask(taskName, task);
   }
 
 // переключатель
-  toggleEdit(item) {
+  toggleEdit(item: CurrentTasks) {
     item.editing = true;
   }
 
@@ -70,7 +70,7 @@ export class ImportNameComponent implements OnInit, OnDestroy {
   }
 
 // Удаление
-  remove(index) {
+  remove(index: CurrentTasks) {
     this.svc.remove(this.tasks, index);
   }
 

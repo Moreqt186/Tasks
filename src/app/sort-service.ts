@@ -26,7 +26,7 @@ export class SortService {
 
   }
 
-  public addTask(a, b) {
+  public addTask(a: string, b: string) {
     this.tasks.push({
       task: a,
       taskName: b,
