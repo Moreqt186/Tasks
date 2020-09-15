@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {SortService} from '../sort-service';
+import {Task} from '../models/tasks';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,7 @@ import {SortService} from '../sort-service';
       </div>`
 })
 export class TaskPageComponent implements OnInit {
-  task;
+  task: Task;
 
   constructor(private activateRoute: ActivatedRoute, public sortService: SortService) {
   }

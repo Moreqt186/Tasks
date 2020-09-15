@@ -1,21 +1,24 @@
 import {Injectable} from '@angular/core';
+import {Task} from './models/tasks';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SortService {
-  constructor() {
-  }
+
   id = 1;
-  tasks = [
+  tasks: Array<Task> = [
     {
-      task: 'тестовая задача',
-      taskName: 'Тестовое имя',
+      task: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus consequuntur debitis qui ratione.',
+      taskName: 'Lorem 13',
       id: 0,
       myUrl: '',
       editing: false,
     },
   ];
+
+  constructor() {
+  }
 
   public sortByTaskName(tasks) {
     tasks.sort((a, b) => a.taskName > b.taskName ? 1 : -1);

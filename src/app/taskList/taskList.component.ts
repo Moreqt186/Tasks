@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import {SortService} from '../sort-service';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
-import {CurrentTasks} from '../models/tasks';
+import {Task} from '../models/tasks';
 
 @Component({
   selector: 'app-input',
@@ -12,69 +12,69 @@ import {CurrentTasks} from '../models/tasks';
 })
 
 export class ImportNameComponent implements OnInit, OnDestroy {
-
-  constructor(private svc: SortService, private router: Router) {
-  }
-  currentTasks: CurrentTasks = {
+  currentTasks: Task = {
     taskName: '',
     task: '',
     editing: false,
     id: 0,
   };
+
+  tasks: Task[] = [];
+
+  constructor(private svc: SortService, private router: Router) {
+  }
+
   myForm: FormGroup = new FormGroup({
     taskName: new FormControl('', Validators.required),
     task: new FormControl('', Validators.required),
   });
-  tasks = [];
 
   ngOnInit() {
     this.tasks = this.svc.getTasks();
   }
-
-// создание задачи
+// task creation
   addTask(task: string, taskName: string) {
     this.svc.addTask(taskName, task);
   }
 
-// переключатель
-  toggleEdit(item: CurrentTasks) {
+// toggle
+  toggleEdit(item: Task) {
     item.editing = true;
   }
-
-// редактирование задачи
-  editTask(item, index) {
+// task editing
+  editTask(item: Task, index: number) {
     if (this.currentTasks.task.trim() && this.currentTasks.taskName.trim()) {
       this.svc.editTask(index, this.currentTasks.taskName, this.currentTasks.task);
     }
     item.editing = false;
   }
 
-// Перемещение задач
+// Drag&Drop
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.tasks, event.previousIndex, event.currentIndex);
   }
 
-// Добавление картинки
-  selectFile(event, item) {
+// Adding an image
+  selectFile(event, item: Task) {
     this.svc.selectFile(event, item);
   }
 
-// Сортировка по задаче
-  sortByTask(args) {
+// Sort by task content
+  sortByTask(args: Task[]) {
     this.svc.sortByTask(args);
   }
 
-// Сортировка по имени задачи
-  sortByTaskName(args) {
+// Sort by task name
+  sortByTaskName(args: Task[]) {
     this.svc.sortByTaskName(args);
   }
 
-// Удаление
-  remove(index: CurrentTasks) {
+// Deletion
+  remove(index: number) {
     this.svc.remove(this.tasks, index);
   }
 
-// Роутинг
+// Routing
   onSelect(item) {
     this.router.navigate(['/task', item.id]);
   }

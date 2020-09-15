@@ -21,11 +21,9 @@
       </button>
     </div>
   </form>
-  <span cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+  <span>
 <div class="row row-cols-3 m-1">
-<div class="card bg-light w-15" *ngFor="let item of tasks; let index = index" cdkDragLockAxis="x"
-     cdkDrag>
-  <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+<div class="card bg-light w-15" *ngFor="let item of tasks; let index = index">
   <div class="card-body p-1">
 <button type="button" class="btn btn-outline-info m-1" (click)="onSelect(item)">Перейти к задаче</button>
      <h5 class="card-title text-info m-1"> Имя Задачи: {{item.taskName | uppercase}}</h5>
